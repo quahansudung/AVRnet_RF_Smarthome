@@ -80,8 +80,7 @@ OBJDIR = .
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = $(TARGET).c 
-
+SRC = adc.c arp.c enc28j60.c ethernet.c http.c ip.c lcd.c main.c menu.c tcp.c udp.c
 
 # List C++ source files here. (C dependencies are automatically generated.)
 CPPSRC = 
