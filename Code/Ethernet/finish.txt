@@ -1,0 +1,4 @@
+dieu khien duoc het cac chan thiet bi dung nhu mong muon.
+Xong phan hien thi duoc menu de dieu khien thiet bi.
+xong phan tuy chinh thoi gian sang toi cua man hinh.
+Da bo? UDP, ICMP, nhung chua bo cac chuc nang lien quan 
