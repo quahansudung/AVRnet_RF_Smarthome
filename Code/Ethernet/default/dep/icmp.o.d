@@ -1,4 +1,4 @@
-ip.o: ../ip.c ../includes.h \
+icmp.o: ../icmp.c ../includes.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/sfr_defs.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/inttypes.h \

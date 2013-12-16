@@ -632,7 +632,7 @@ void key_dw_process ( void )
 void menu_process ( void )
 {
 	static BYTE key_hold_count=0, key_hold_step_delay=0;
-
+	BYTE rxtx_buffer[MAX_RXTX_BUFFER];
 	BYTE key_code, temp;
 	static BYTE backlight_seccount=250;
 	// get switch value from port
@@ -719,6 +719,27 @@ void menu_process ( void )
 			submenu_stack = submenu_index;
 			menu_index = submenu_index + menu_index;
 			submenu_index = 1;
+		}
+		// ping server
+		else if ( menu_index == 5 )
+		{
+			// Show on lcd first line
+			lcd_putc( '\f' );
+			lcd_print ( (BYTE *)menu_list[ 4 ] );
+			lcd_putc( '\n' );
+			if ( icmp_ping ( (BYTE*)rxtx_buffer, (BYTE*)&server_mac, (BYTE*)&server_ip ) )
+			{
+				lcd_print_p ( PSTR ( "Ping OK." ) );
+			}
+			else
+			{
+				lcd_print_p ( PSTR ( "Not found." ) );
+			}
+			flag1.bits.lcd_busy = 1;
+			menu_index = 0;
+			submenu_index = 0;
+			flag1.bits.key_is_executed = 1;
+			return;
 		}
 		// change cursor setting on each menu
 		else

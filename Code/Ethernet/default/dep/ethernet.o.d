@@ -19,8 +19,8 @@ ethernet.o: ../ethernet.c ../includes.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/pgmspace.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/eeprom.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/wdt.h ../struct.h \
-  ../enc28j60.h ../ethernet.h ../ip.h ../tcp.h ../arp.h ../http.h \
-  ../lcd.h ../menu.h ../adc.h
+  ../enc28j60.h ../ethernet.h ../ip.h ../tcp.h ../icmp.h ../arp.h \
+  ../udp.h ../http.h ../lcd.h ../menu.h ../adc.h
 
 ../includes.h:
 
@@ -74,7 +74,11 @@ c:/winavr-20100110/lib/gcc/../../avr/include/avr/wdt.h:
 
 ../tcp.h:
 
+../icmp.h:
+
 ../arp.h:
+
+../udp.h:
 
 ../http.h:
 

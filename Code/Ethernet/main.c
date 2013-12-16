@@ -74,7 +74,24 @@ void server_process ( void )
 		return;
 	}
 
+	// check ICMP packet, if packet is icmp packet let's send icmp echo reply
+	if ( icmp_send_reply ( (BYTE*)&rxtx_buffer, (BYTE*)&client_mac, (BYTE*)&client_ip ) )
+	{
+		return;
+	}
 
+	// check UDP packet
+	if (udp_receive ( (BYTE *)&rxtx_buffer, (BYTE *)&client_mac, (BYTE *)&client_ip ))
+	{
+// added in V1.1 ***********************************
+#ifndef REMOVE_BOOTLOADER_SUPPORT
+		if( flag2.bits.software_reset )
+			software_reset();
+#endif
+// end added in V1.1 *******************************
+		return;
+	}
+	
 	// tcp start here
 	// start web server at port 80, see http.c
 	http_webserver_process ( (BYTE*)rxtx_buffer, (BYTE*)&client_mac, (BYTE*)&client_ip );

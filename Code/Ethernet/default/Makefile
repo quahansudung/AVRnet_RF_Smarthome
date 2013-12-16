@@ -35,7 +35,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = enc28j60.o main.o http.o arp.o tcp.o ip.o ethernet.o menu.o lcd.o adc.o 
+OBJECTS = enc28j60.o main.o http.o arp.o tcp.o ip.o ethernet.o icmp.o menu.o lcd.o adc.o udp.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -65,6 +65,9 @@ ip.o: ../ip.c
 ethernet.o: ../ethernet.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
+icmp.o: ../icmp.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
 menu.o: ../menu.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
@@ -72,6 +75,9 @@ lcd.o: ../lcd.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 adc.o: ../adc.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+udp.o: ../udp.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
